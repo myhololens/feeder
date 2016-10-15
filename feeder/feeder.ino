@@ -36,7 +36,7 @@ void setup() {
   
   Ethernet.begin(mac, ip, gateway, subnet);
 
-  //check_start();
+  check_start();
 }
 
 void loop() {
@@ -50,10 +50,10 @@ void loop() {
 }
 
 
-void move_drive(byte direction) {
+void move_drive(byte direct) {
   //while (main_flag) {
-    digitalWrite( MOTOR_B_DIR, direction );      // directionection = forward
-    analogWrite( MOTOR_B_PWM, 255 - direction ); // drive's speed
+    digitalWrite( MOTOR_B_DIR, direct );      // directionection = forward
+    analogWrite( MOTOR_B_PWM, 255 - direct ); // drive's speed
     delay(FULLCIRCLE_TIME);
     stop_drive();
     //delay(FEED_TIMEOUT);
@@ -87,7 +87,7 @@ void stop_drive() {
   delay(500);
   digitalWrite( MOTOR_B_DIR, LOW );
   digitalWrite( MOTOR_B_PWM, LOW );
-  //stop_flag = !stop_flag;
+  stop_flag = !stop_flag;
 }
 
 void processClient(EthernetClient client)
