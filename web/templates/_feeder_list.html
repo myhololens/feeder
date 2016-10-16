@@ -1,0 +1,5 @@
+<div>
+    {% for feeder in feeders %}
+    <h4 class="well"><strong>{{feeder.name}}({{feeder.type}})</strong> - <em>{{feeder.address}}:{{feeder.port}}</em></h4>
+    {% endfor %}
+</div>
