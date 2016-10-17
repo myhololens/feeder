@@ -1,0 +1,34 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1>Add feeder</h1>
+</div>
+
+<br>
+
+<form action="/feeder" method="POST">
+    <div class="form-group">
+        <input name="name" class="form-control input-lg" type="text" placeholder="Enter a feeder name" required>
+        <input name="address" class="form-control input-lg" type="text" placeholder="Enter an address" required>
+        <input name="port" class="form-control input-lg" type="text" placeholder="Enter a port" required>
+
+
+        <select name="type" class="form-control select-lg" required>
+            <option value="dry">dry</option>
+            <option value="wet" selected>wet</option>
+            <option value="water">water</option>
+        </select>
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add">
+</form>
+<br>
+<form action="/feeder/delete_last" method="POST">
+    <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Delete last">
+</form>
+<hr>
+
+{% include "_feeder_list.html" %}
+
+{% endblock %}

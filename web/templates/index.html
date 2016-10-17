@@ -1,0 +1,37 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1>Feeder control</h1>
+</div>
+
+<br>
+
+<form action="/feeder/move" method="POST">
+    <div class="form-group">
+        <div>
+        </div>
+        <div class="text-left"> Select a feeder </div>
+        <select name="feeder_name" class="form-control select-lg" required>
+            {% for feeder in feeders %}
+            <option value={{feeder.name}}>{{feeder.name}}</option>
+            {% endfor %}
+        </select>
+        <div class="text-left"> Select a direction </div>
+        <select name="direction" class="form-control select-lg" required>
+            <option value='clockwise'>clockwise</option>
+            <option value='counter-clockwise'>counter-clockwise</option>
+        </select>
+    </div>
+
+    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Move">
+</form>
+
+<br>
+
+
+<hr>
+
+{% include "_feeder_list.html" %}
+{% endblock %}
